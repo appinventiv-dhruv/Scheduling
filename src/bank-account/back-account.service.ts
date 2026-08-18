@@ -27,8 +27,10 @@ export class BankService {
 
     async deposit(email: string, amount: number): Promise<Bank>  {
         try{
+            if (!(amount > 0))
+                throw new Error('Amount must be a positive number');
             const account = await this.accountModel.findOne({ email });
-            if (!account) 
+            if (!account)
                 throw new Error('Account not found');
             account.balance += amount;
             console.log(account.balance);
@@ -42,11 +44,13 @@ export class BankService {
 
     async withdraw(email: string, amount: number): Promise<Bank>  {
         try{
+            if (!(amount > 0))
+                throw new Error('Amount must be a positive number');
             const account = await this.accountModel.findOne({ email });
-            if (!account) 
+            if (!account)
                 throw new Error('Account not found');
 
-            if (account.balance < amount) 
+            if (account.balance < amount)
                 throw new Error('Insufficient funds');
             account.balance -= amount;
             return account.save();
