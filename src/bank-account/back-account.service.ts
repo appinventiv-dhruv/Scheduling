@@ -31,7 +31,11 @@ export class BankService {
             if (!account) 
                 throw new Error('Account not found');
             account.balance += amount;
+<<<<<<< Updated upstream:src/bank-account/back-account.service.ts
             console.log(account.balance);
+=======
+            console.log(`Deposited ${amount} to account ${email}. New balance: ${account.balance}`);
+>>>>>>> Stashed changes:src/bank-account/bank-account.service.ts
             return account.save();
         }
         catch(err){
@@ -43,6 +47,7 @@ export class BankService {
     async withdraw(email: string, amount: number): Promise<Bank>  {
         try{
             const account = await this.accountModel.findOne({ email });
+            console.log(`Attempting to withdraw ${amount} from account ${email}. Current balance: ${account?.balance}`);
             if (!account) 
                 throw new Error('Account not found');
 
