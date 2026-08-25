@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post, Put, Query } from "@nestjs/common";
-import { BankService } from "./back-account.service";
+import { BankService } from "./bank-account.service";
 import { CreateDTO } from "./dto/dto.createAccount";
 import { ApiOkResponse, ApiOperation, ApiTags } from "@nestjs/swagger";
 
@@ -7,12 +7,12 @@ import { ApiOkResponse, ApiOperation, ApiTags } from "@nestjs/swagger";
 @Controller('/bank-account')
 @ApiTags('Acounts')
 export class BankController {
-    constructor(private readonly bankService: BankService){}
+    constructor(private readonly bankService: BankService) { }
 
     @Post('/create')
     @ApiOkResponse({ type: CreateDTO })
     @ApiOperation({ summary: 'Created' })
-    async create(@Body() createDto: CreateDTO ) {
+    async create(@Body() createDto: CreateDTO) {
         return await this.bankService.createAccount(createDto);
     }
 
