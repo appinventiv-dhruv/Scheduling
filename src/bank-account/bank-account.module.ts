@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common";
-import { BankService } from "./back-account.service";
+import { BankService } from "./bank-account.service";
 import { BankController } from "./bank-account.controller";
 import { MongooseModule } from "@nestjs/mongoose";
 import { Bank, BankSchema } from "./bank-account.schema";
@@ -12,14 +12,14 @@ import { EmailModule } from "src/email/email.module";
     imports: [
         MongooseModule.forFeature([
             {
-              name: Bank.name,
-              schema: BankSchema,
+                name: Bank.name,
+                schema: BankSchema,
             },
         ]),
         EmailModule
     ],
-    providers: [BankService,ScheduleService],
+    providers: [BankService, ScheduleService],
     controllers: [BankController]
 })
 
-export class BankModule{}
+export class BankModule { }
