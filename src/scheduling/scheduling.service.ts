@@ -24,8 +24,6 @@ export class ScheduleService {
     catch (err) {
       console.error('Failed to send some emails:', err);
     }
-
-    console.log('Scheduled job completed.');
   }
 }
 
