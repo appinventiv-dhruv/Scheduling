@@ -13,7 +13,6 @@ export class ScheduleService {
   private async sendDailyBalance() {
     console.log('Scheduled job started...');
     const users = await this.accountModel.find({});
-    console.log(users);
     try {
       await Promise.all(
         users.map((user) => {
@@ -21,13 +20,10 @@ export class ScheduleService {
           return this.emailService.sendEmail(user.email, user.balance);
         }),
       );
-      console.log('All emails sent');
     } 
     catch (err) {
       console.error('Failed to send some emails:', err);
     }
-
-    console.log('Scheduled job completed.');
   }
 }
 

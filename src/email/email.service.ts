@@ -25,7 +25,6 @@ export class EmailService {
         subject: 'Your balance',
         text: `Your balance is ${balance}`,
       });
-      console.log(`Email sent to ${email}: ${info.messageId}`);
     } 
     catch (error) {
       console.error(`Error sending email to ${email}:`, error);
