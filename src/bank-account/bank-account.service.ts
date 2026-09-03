@@ -17,8 +17,6 @@ export class BankService {
             name: createDto.name,
             balance: createDto.balance
         });
-
-        
     }
 
     async deposit(email: string, amount: number): Promise<Bank>  {
